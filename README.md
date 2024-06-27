@@ -2,6 +2,16 @@
 
 Use this VM Option `-Dspring.profiles.active=dev`
 
+## URLs
+
+```
+GraphiQL URL:
+http://localhost:5000/graphiql
+
+Playground URL:
+http://localhost:5000/playground
+```
+
 ## Docker commands
 
 ```
