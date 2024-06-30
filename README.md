@@ -17,20 +17,20 @@ http://localhost:5000/playground
 
 ### GraphQL Queries
 
-```json
+```js
 {
   hello
 }
 ```
 
-```json
+```js
 {
   hello,
   soma(a:1, b:2)
 }
 ```
 
-```json
+```js
 {
   hello,
   clientes {
@@ -39,7 +39,7 @@ http://localhost:5000/playground
 }
 ```
 
-```json
+```js
 {
   hello,
   cliente(id:1) {
@@ -48,7 +48,7 @@ http://localhost:5000/playground
 }
 ```
 
-```json
+```js
 {
   hello,
   c1: cliente(id:1) {
@@ -60,7 +60,7 @@ http://localhost:5000/playground
 }
 ```
 
-```json
+```js
 {
   hello,
   produtos {
@@ -69,7 +69,7 @@ http://localhost:5000/playground
 }
 ```
 
-```json
+```js
 mutation {
   saveProduto(produto: {
     nome: "Teste",
@@ -80,7 +80,7 @@ mutation {
 }
 ```
 
-```json
+```js
 {
   hello,
   clientes {
@@ -92,7 +92,7 @@ mutation {
 }
 ```
 
-```json
+```js
 {
   hello,
   clientes {
@@ -107,7 +107,7 @@ mutation {
 }
 ```
 
-```json
+```js
 {
   compras(page:0, size:2) {
     id, quantidade, status, data,
@@ -118,7 +118,7 @@ mutation {
 }
 ```
 
-```json
+```js
 {
   compras(page:1, size:2) {
     id, quantidade, status, data,
@@ -129,7 +129,7 @@ mutation {
 }
 ```
 
-```json
+```js
 {
   compras {
     id, quantidade, status, data
