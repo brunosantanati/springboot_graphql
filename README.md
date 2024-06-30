@@ -5,11 +5,144 @@ Use this VM Option `-Dspring.profiles.active=dev`
 ## URLs
 
 ```
+Hello World Rest to test application:
+http://localhost:5000/hello
+
 GraphiQL URL:
 http://localhost:5000/graphiql
 
 Playground URL:
 http://localhost:5000/playground
+```
+
+### GraphQL Queries
+
+```json
+{
+  hello
+}
+```
+
+```json
+{
+  hello,
+  soma(a:1, b:2)
+}
+```
+
+```json
+{
+  hello,
+  clientes {
+    id, nome, email,
+  }
+}
+```
+
+```json
+{
+  hello,
+  cliente(id:1) {
+    id, nome, email,
+  }
+}
+```
+
+```json
+{
+  hello,
+  c1: cliente(id:1) {
+    id, nome, email,
+  },
+  c2: cliente(id:2) {
+    id, nome, email,
+  },
+}
+```
+
+```json
+{
+  hello,
+  produtos {
+    id, nome, valor
+  },
+}
+```
+
+```json
+mutation {
+  saveProduto(produto: {
+    nome: "Teste",
+    valor: 150
+  }) {
+    id, nome, valor
+  }
+}
+```
+
+```json
+{
+  hello,
+  clientes {
+    id, nome, email,
+    compras {
+      quantidade, status, data
+    }
+  }
+}
+```
+
+```json
+{
+  hello,
+  clientes {
+    id, nome, email,
+    compras {
+      quantidade, status, data,
+      produto {
+        nome, valor
+      }
+    }
+  }
+}
+```
+
+```json
+{
+  compras(page:0, size:2) {
+    id, quantidade, status, data,
+    produto {
+      nome, valor
+    }
+  }
+}
+```
+
+```json
+{
+  compras(page:1, size:2) {
+    id, quantidade, status, data,
+    produto {
+      nome, valor
+    }
+  }
+}
+```
+
+```json
+{
+  compras {
+    id, quantidade, status, data
+    produto {
+      nome
+      valor
+    }
+    cliente {
+      nome
+      email
+    }
+  }
+}
 ```
 
 ## Docker commands
