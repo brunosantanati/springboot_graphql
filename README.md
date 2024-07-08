@@ -4,6 +4,12 @@ Use this VM Option `-Dspring.profiles.active=dev`
 
 ## URLs
 
+[Playground](https://github.com/graphql/graphql-playground)  
+[Graphql doc](https://graphql.org/learn/)  
+[Scalar types](https://graphql.org/learn/schema/#scalar-types)  
+
+## Local URLs
+
 ```
 Hello World Rest to test application:
 http://localhost:5000/hello
@@ -140,6 +146,24 @@ mutation {
     cliente {
       nome
       email
+    }
+  }
+}
+```
+
+## Live demo (graphiql)
+
+[graphiql](https://github.com/graphql/graphiql)  
+[Live demo](https://graphql.github.io/swapi-graphql/)
+
+## Queries live demo
+
+```js
+{
+  allFilms {
+    films {
+      title
+      director
     }
   }
 }
