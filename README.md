@@ -258,6 +258,38 @@ query GetCliente($id:ID!) {
 ```
 ![Query Variables](img/query-variables.png)  
 
+### Section 5
+
+```js
+{
+  produtos {
+    id,nome,valor
+  }
+}
+```
+
+```js
+{
+  produto(id:1) {
+    id,nome,valor
+  }
+}
+```
+
+```js
+mutation {
+  saveProduto(produto:{nome: "Teste",valor: 100}) {
+    id, nome, valor
+  }
+}
+```
+
+```js
+mutation {
+  deleteProduto(id:6)
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
