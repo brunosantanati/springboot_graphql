@@ -171,7 +171,15 @@ mutation {
 }
 ```
 
-It works on branch 03-GraphQL  
+```js
+{
+  clientes{
+    id,nome,email
+  }
+}
+```
+
+It works on branch 03-GraphQL-custom (with port 8080)  
 ```js
 mutation {
   saveCliente(nome:"Bruno Sant' Ana",email:"bruno.santana@gmail.com"){
@@ -180,11 +188,18 @@ mutation {
 }
 ```
 
+It works on branch 03-GraphQL-custom (with port 8080)
 ```js
 mutation {
   saveCliente(id:4,nome:"Bruno Sant' Ana",email:"bruno.santana.ti@gmail.com"){
     id,nome,email
   }
+}
+```
+
+```js
+mutation {
+  deleteCliente(id:4)
 }
 ```
 
