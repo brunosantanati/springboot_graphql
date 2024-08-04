@@ -256,6 +256,7 @@ query GetCliente($id:ID!) {
   "id": 3
 }
 ```
+![Query Variables](img/query-variables.png)  
 
 ## Live demo (graphiql)
 
