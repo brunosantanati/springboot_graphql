@@ -12,6 +12,10 @@ Use this VM Option `-Dspring.profiles.active=dev`
 ## Local URLs
 
 ```
+We are using port 5000 in all URLs because of this config in the application.properties:
+server.port=${PORT:5000}
+Otherwise, it would be 8080.
+
 Hello World Rest to test application:
 http://localhost:5000/hello
 
@@ -20,9 +24,14 @@ http://localhost:5000/graphiql
 
 Playground URL:
 http://localhost:5000/playground
+
+Schema:
+http://localhost:5000/graphql/schema.json
 ```
 
-### GraphQL Queries (introduction video)
+## GraphQL Queries (introduction video)
+
+### Sections 1 & 2
 
 ```js
 {
@@ -154,6 +163,8 @@ mutation {
 
 ## GraphQL Queries (step by step)
 
+### Section 3
+
 ```js
 {
   hello,
@@ -200,6 +211,49 @@ mutation {
 ```js
 mutation {
   deleteCliente(id:4)
+}
+```
+
+### Section 4
+
+```js
+{
+  a: cliente(id:1) {
+    ...fragCliente
+  },
+  b: cliente(id:2) {
+    ...fragCliente
+  },
+  clientes {
+    ...fragCliente
+  }
+}
+
+fragment fragCliente on Cliente {
+  id,nome,email
+}
+```
+
+```js
+mutation {
+  saveCliente(cliente:{id:2,nome:"Teste Input Type",email:"teste@gmail.com"}){
+    id,nome,email
+  }
+}
+```
+
+```js
+query GetCliente($id:ID!) {
+  cliente(id:$id) {
+    id
+    nome
+    email
+  }
+}
+
+// Query Variables:
+{
+  "id": 3
 }
 ```
 
