@@ -290,6 +290,41 @@ mutation {
 }
 ```
 
+```js
+mutation {
+  saveCompra(compra:{
+    clienteId:1,
+    produtoId:1,
+    quantidade:10,
+    status:"OK"
+  }) {
+    id,quantidade,status
+  }
+}
+```
+
+```js
+{
+  compras {
+    id,
+    quantidade,
+    status,
+    cliente {
+      id,nome
+    },
+    produto {
+      id,nome,valor
+    }
+  }
+}
+```
+
+```js
+mutation {
+  deleteCompra(id:4)
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
