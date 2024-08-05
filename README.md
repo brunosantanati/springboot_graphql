@@ -4,6 +4,7 @@ Use this VM Option `-Dspring.profiles.active=dev`
 
 ## URLs
 
+[Original repo with source code](https://github.com/rlechetaudemy/springboot_graphql)    
 [Playground](https://github.com/graphql/graphql-playground)  
 [Graphql doc](https://graphql.org/learn/)  
 [Scalar types](https://graphql.org/learn/schema/#scalar-types)  
