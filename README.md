@@ -325,6 +325,72 @@ mutation {
 }
 ```
 
+### Section 6
+
+Using a resolver for valorReais (ProdutoResolver):
+```js
+{
+  produtos {
+    id,
+    nome,
+    valor,
+    valorReais
+  }
+}
+```
+
+Using a resolver for compra (CompraResolver) 
+in order to get the cliente and produto associated with each compra:
+```js
+{
+  compras {
+    id,
+    quantidade,
+    status,
+    cliente {
+      id,nome
+    },
+    produto {
+      id,nome
+    }
+  }
+}
+```
+
+Using a resolver for cliente (ClienteResolver)
+in order to get all compras for a given cliente:
+```js
+// all clientes
+{
+  clientes {
+    id
+    nome
+    email
+    compras {
+      id,quantidade
+      produto {
+        nome,valor
+      }
+    }
+  }
+}
+
+// cliente 1
+{
+  cliente(id:1) {
+    id
+    nome
+    email
+    compras {
+      id,quantidade
+      produto {
+        nome,valor
+      }
+    }
+  }
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
