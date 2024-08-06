@@ -392,6 +392,54 @@ in order to get all compras for a given cliente:
 }
 ```
 
+### Section 7
+
+Using query with join:
+```js
+{
+  comprasRelatorio {
+    compraId,
+    cliente,
+    produto,
+    quantidade
+  }
+}
+```
+
+Using pagination:
+```js
+{
+  compras(page:0) {
+    id,
+    quantidade,
+    status,
+    cliente {
+      id,nome
+    },
+    produto {
+      id,nome,valor
+    }
+  }
+}
+```
+
+Using pagination and size:
+```js
+{
+  compras(page:0,size:4) {
+    id,
+    quantidade,
+    status,
+    cliente {
+      id,nome
+    },
+    produto {
+      id,nome,valor
+    }
+  }
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
