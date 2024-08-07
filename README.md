@@ -460,6 +460,100 @@ Using a scalar type ('data' field below). Check also [DateScalar](https://github
 }
 ```
 
+### Section 9
+
+There is a logic in the code that when we have the 'quantidade' greater than 100, an exception is thrown.
+So, when we execute this:
+```js
+mutation {
+  saveCompra(compra:{
+    clienteId:2,
+    produtoId:1,
+    quantidade:101,
+    status:"OK"
+  }) {
+    id,quantidade,status
+  }
+}
+```
+We get this response by default:
+```js
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Internal Server Error(s) while executing query",
+      "path": null,
+      "extensions": null
+    }
+  ]
+}
+```
+But we can handle exceptions to present something like this:
+```js
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Não é possível fazer uma compra com mais de 100 items"
+    }
+  ]
+}
+```
+
+Another example would be pass 'quantidade' as string instead of a number:
+```js
+mutation {
+  saveCompra(compra:{
+    clienteId:2,
+    produtoId:1,
+    quantidade:"10",
+    status:"OK"
+  }) {
+    id,quantidade,status
+  }
+}
+```
+which results in a validation exception that generates a response like this:
+```js
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Validation error of type WrongType: argument 'compra.quantidade' with value 'StringValue{value='10'}' is not a valid 'Int' @ 'saveCompra'",
+      "locations": [
+        {
+          "line": 2,
+          "column": 14,
+          "sourceName": null
+        }
+      ],
+      "description": "argument 'compra.quantidade' with value 'StringValue{value='10'}' is not a valid 'Int'",
+      "validationErrorType": "WrongType",
+      "queryPath": [
+        "saveCompra"
+      ],
+      "errorType": "ValidationError",
+      "path": null,
+      "extensions": null
+    }
+  ]
+}
+```
+We also can handle this validation exception, in this case we are simply making it smaller focusing only on the message:
+```js
+{
+  "data": null,
+  "errors": [
+    {
+      "message": "Validation error of type WrongType: argument 'compra.quantidade' with value 'StringValue{value='10'}' is not a valid 'Int' @ 'saveCompra'"
+    }
+  ]
+}
+```
+
+Check this class: [GraphQLHandler](https://github.com/brunosantanati/springboot_graphql/blob/main/src/main/java/com/udemy/compras/graphql/exceptions/GraphQLHandler.java).
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
