@@ -562,6 +562,53 @@ This section addresses how to write tests for a GraphQL application. You can che
 It's important to mention that you must change your test run configuration to also use this VM Option:  
 <code>-Dspring.profiles.active=dev</code>  
 
+### Section 11
+
+You should use the branch 10-Cache, these changes are not present in the main branch.
+
+This section addresses cache.
+
+In order to enable JPA and Spring cache you should:
+- add 2 dependencies: spring-boot-starter-cache and hibernate-ehcache ([pom.xml](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/pom.xml#L41))  
+- create the [ehcache.xml](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/resources/ehcache.xml) file.
+- add some cache related properties in the [application.properties](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/resources/application.properties#L16)
+- add @Cacheable annotation in the entities you want to cache ([example here](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/java/com/udemy/compras/domain/Cliente.java#L13))
+- use the @EnableCaching annotation ([here](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/java/com/udemy/compras/ComprasApplication.java#L8))
+- use the @Cacheable annotation on the service layer (check [here](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/java/com/udemy/compras/domain/ClienteService.java#L18) and [here](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/java/com/udemy/compras/domain/CompraService.java#L56))
+- use @CacheEvict annotation on the service layer ([example here](https://github.com/brunosantanati/springboot_graphql/blob/10-Cache/src/main/java/com/udemy/compras/domain/CompraService.java#L39))  
+
+In order to replace the Spring cache by the JPA cache, you should:  
+- remove the annotations @Cacheable and @CacheEvict from service layer
+- use @QueryHints annotation in repositories (one advantage is that the cache will be updated automatically, we don't need to use something like @CacheEvict)
+
+Queries to test if the cache is working fine:
+```js
+mutation {
+  saveCompra(compra:{
+    clienteId:2,
+    produtoId:1,
+    quantidade:"10",
+    status:"Teste CACHE"
+  }) {
+    id,quantidade,status
+  }
+}
+```
+
+```js
+{
+  clientes {
+    id,nome,email,
+    compras {
+      id,quantidade,status,
+      produto {
+        nome,valor
+      }
+    }
+  }
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
