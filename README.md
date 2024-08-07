@@ -440,6 +440,26 @@ Using pagination and size:
 }
 ```
 
+### Section 8
+
+Using a scalar type ('data' field below). Check also [DateScalar](https://github.com/brunosantanati/springboot_graphql/blob/main/src/main/java/com/udemy/compras/graphql/scalar/DateScalar.java) and [DateUtils](https://github.com/brunosantanati/springboot_graphql/blob/main/src/main/java/com/udemy/compras/utils/DateUtils.java).
+```js
+{
+  compras(page:0,size:10) {
+    id,
+    quantidade,
+    status,
+    data,
+    cliente {
+      id,nome
+    },
+    produto {
+      id,nome,valor
+    }
+  }
+}
+```
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
