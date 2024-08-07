@@ -554,6 +554,14 @@ We also can handle this validation exception, in this case we are simply making 
 
 Check this class: [GraphQLHandler](https://github.com/brunosantanati/springboot_graphql/blob/main/src/main/java/com/udemy/compras/graphql/exceptions/GraphQLHandler.java).
 
+### Section 10
+
+This section addresses how to write tests for a GraphQL application. You can check this files:  
+[cliente.graphql](https://github.com/brunosantanati/springboot_graphql/blob/main/src/test/resources/cliente.graphql)  
+[ClienteGraphQLTest.java](https://github.com/brunosantanati/springboot_graphql/blob/main/src/test/java/com/udemy/compras/ClienteGraphQLTest.java)    
+It's important to mention that you must change your test run configuration to also use this VM Option:  
+<code>-Dspring.profiles.active=dev</code>  
+
 ## Live demo (graphiql)
 
 [graphiql](https://github.com/graphql/graphiql)  
