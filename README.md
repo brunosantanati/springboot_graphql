@@ -564,7 +564,9 @@ It's important to mention that you must change your test run configuration to al
 
 ### Section 11
 
-You should use the branch 10-Cache, these changes are not present in the main branch.
+You can see cache related changes partially in the branch 10-Cache, these changes are not present in the main branch.  
+However, I created a branch named 10-Cache-custom which has all cache related changes.  
+In this branch you should use port 8080.  
 
 This section addresses cache.
 
@@ -587,7 +589,7 @@ mutation {
   saveCompra(compra:{
     clienteId:2,
     produtoId:1,
-    quantidade:"10",
+    quantidade:20,
     status:"Teste CACHE"
   }) {
     id,quantidade,status
@@ -605,6 +607,35 @@ mutation {
         nome,valor
       }
     }
+  }
+}
+```
+
+```js
+{
+  compras {
+    id,quantidade,status,
+    produto {
+      nome,valor
+    }
+  }
+}
+```
+
+```js
+mutation {
+  saveProduto(produto:{nome:"Teste Cache JPA",valor:150}) {
+    id,nome,valor
+  }
+}
+```
+
+```js
+{
+  produtos {
+    id
+    nome
+    valor
   }
 }
 ```
