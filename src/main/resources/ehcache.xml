@@ -19,7 +19,7 @@
         memoryStoreEvictionPolicy="LRU"
     />
 
-    <cache name="compras"
+    <cache name="comprasByCliente"
            maxElementsInMemory="10000"
     />
 

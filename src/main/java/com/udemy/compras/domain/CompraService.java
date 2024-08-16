@@ -54,6 +54,7 @@ public class CompraService {
     }
 
 //    @Cacheable(value = "comprasByCliente", key = "#c.id")
+    @Cacheable(value = "comprasByCliente") //this cache exists at line 22 of ehcache.xml
     public List<Compra> findAllByCliente(Cliente c) {
         return rep.findAllByCliente(c.getId());
     }
