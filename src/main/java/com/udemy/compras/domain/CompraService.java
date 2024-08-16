@@ -41,7 +41,7 @@ public class CompraService {
     }
 
     @Transactional
-    @CacheEvict(value = "comprasByCliente", key = "#c.cliente.id") //this cache exists at line 22 of ehcache.xml
+    //@CacheEvict(value = "comprasByCliente", key = "#c.cliente.id") //this cache exists at line 22 of ehcache.xml
     public Compra save(Compra c) {
         if(c.getQuantidade() > 100) {
             throw new DomainException("Não é possível fazer uma compra com mais de 100 items");
@@ -58,7 +58,7 @@ public class CompraService {
         return false;
     }
 
-    @Cacheable(value = "comprasByCliente", key = "#c.id") //this cache exists at line 22 of ehcache.xml
+    //@Cacheable(value = "comprasByCliente", key = "#c.id") //this cache exists at line 22 of ehcache.xml
     public List<Compra> findAllByCliente(Cliente c) {
         return rep.findAllByCliente(c.getId());
     }
