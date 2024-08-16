@@ -12,6 +12,11 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+/* It's important to mention that, when using Spring cache,
+ * we should use these cache annotation (Cacheable and CacheEvict) in concrete classes,
+ * like this service, not use them in repositories that are interfaces.
+*/
+
 @Service
 public class CompraService {
 
